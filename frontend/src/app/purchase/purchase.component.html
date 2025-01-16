@@ -1,0 +1,20 @@
+<div class="purchase-container">
+  <h1>Purchase Items</h1>
+  <form (ngSubmit)="onPurchase()" #purchaseForm="ngForm">
+    <div>
+      <label for="item">Item:</label>
+      <input type="text" id="item" [(ngModel)]="purchaseItem" name="item" required>
+    </div>
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" [(ngModel)]="purchaseQuantity" name="quantity" required min="1">
+    </div>
+    <button type="submit" [disabled]="!purchaseForm.form.valid">Purchase</button>
+  </form>
+  <div *ngIf="purchaseSuccess">
+    <p>Purchase successful!</p>
+  </div>
+  <div *ngIf="purchaseError">
+    <p>Error: {{ purchaseError }}</p>
+  </div>
+</div>

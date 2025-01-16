@@ -16,6 +16,7 @@ export class AccountController {
     updateAccount(@Body() updateAccountDto: UpdateAccountDto): { [key: string]: any; id: string } | null {
         return this.accountService.updateAccount(updateAccountDto);
     }
+    
 
     getProfile(@Req() req: CustomRequest): { [key: string]: any; id: string } | undefined { 
         return this.accountService.getProfile(req.user.id);
