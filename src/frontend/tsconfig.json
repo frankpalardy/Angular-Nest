@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "rootDir": "../../src", 
+    "paths": {
+      "@backend/*": ["../backend/src/*"]
+    },
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ES6",
+  
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
