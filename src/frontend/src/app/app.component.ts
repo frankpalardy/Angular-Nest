@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-component',
-  template: `
-    <div>
-      <h2>App Component</h2>
-      <!-- your template here -->
-    </div>
-  `
+  selector: 'app-root',
+  templateUrl: './app.component.html',  // Ensure this path is correct 
 })
 export class AppComponent {
-  title = 'My Nest Angular App';
+  // Component logic here
 }

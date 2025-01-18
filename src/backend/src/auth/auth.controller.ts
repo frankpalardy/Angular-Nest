@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Req } from '@nestjs/common';
 import { Request } from 'express'; 
-import { SignInDto } from '../dto/signin.dto';
-import { AuthService } from './auth.service';
+import { SignInDto } from '../dto/signin.dto.js';
+import { AuthService } from './auth.service.js';
 
 interface CustomRequest extends Request {
     user: any; // Define the user property or any other properties you need
@@ -10,13 +10,19 @@ interface CustomRequest extends Request {
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
-
-    @Post('signin')
-    async signIn(@Body() signInDto: SignInDto) {
+  
+    @Post('login')
+    async login(@Body() body: { username: string; password: string }) {
+      const { username, password } = body;
+      const isValidUser = this.authService.validateUser(username, password);
+      if (!isValidUser) {
+        throw new Error('Invalid credentials');
+      }
+      return this.authService.login(username, password);
     }
-    
-    @Post('signout')
-    async signOut(@Req() req: CustomRequest) {
-        return this.authService.logout(req.user);
+  
+    @Post('logout')
+    async logout(@Body() body: { user: any }) {
+      return this.authService.logout(body.user);
     }
-}
+  }

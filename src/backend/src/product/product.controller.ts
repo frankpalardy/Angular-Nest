@@ -1,4 +1,4 @@
-import { ProductService } from './product.service';
+import { ProductService } from './product.service.js';
 
 export class ProductController {
     constructor(private readonly productService: ProductService) {}

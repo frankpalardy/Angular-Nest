@@ -1,8 +1,8 @@
 import { Controller, Put, Get, Body, Req } from '@nestjs/common'; 
 import { Request } from 'express';
 
-import { AccountService } from './account.service';
-import { UpdateAccountDto } from '../dto/update-account.dto';  
+import { AccountService } from './account.service.js';
+import { UpdateAccountDto } from '../dto/update-account.dto.js';  
 
 interface CustomRequest extends Request {
     user: any; // Define the user property or any other properties you need

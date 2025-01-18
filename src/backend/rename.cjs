@@ -8,3 +8,4 @@ fs.rename(oldPath, newPath, (err) => {
   if (err) throw err;
   console.log('Renamed main.js to main.mjs');
 });
+

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: 'sign-in', component: SignInComponent },
       { path: 'admin', component: AdminComponent },
