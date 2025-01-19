@@ -7,7 +7,7 @@ export class ProductController {
         return this.productService.search(query);
     }
 
-    async getProductById(id: string) {
+    async getProductById(id: number) {
         return this.productService.findById(id);
     }
 }

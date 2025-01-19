@@ -1,6 +1,8 @@
-import { Product } from './product.model'; // Adjust the path as necessary
+import { Injectable } from '@nestjs/common';
+import { Product } from './product.model.js'; // Adjust the path as necessary
 import { Observable, of } from 'rxjs';
 
+@Injectable()
 export class ProductService {
     private products: any[] = []; // This should be replaced with actual data source
 
@@ -33,7 +35,7 @@ export class ProductService {
         }
         return null;
     }
-    async findById(id: string): Promise<Product> {
+    async findById(id: number): Promise<Product> {
         const product = this.products.find(product => product.id === id);
         if (!product) {
             throw new Error('Product not found');

@@ -1,4 +1,4 @@
-import { ProductService } from '@backend/product/product.service';
+import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -18,9 +18,11 @@ export class ProductViewComponent {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.productService.findById(productId).then((data) => {
-      this.product = data;
-    });
+    if (productId) {
+      this.productService.findById(productId).then((data) => {
+        this.product = data;
+      });
+    }
   }
 
   purchaseProduct(): void {

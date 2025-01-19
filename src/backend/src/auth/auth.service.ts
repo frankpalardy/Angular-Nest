@@ -1,29 +1,24 @@
-import { SignInDto } from '../dto/signin.dto'; 
+import { Injectable } from '@nestjs/common';
+import { Observable, from } from 'rxjs';
 
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/auth'; // Adjust the URL as needed
+    async login(username: string, password: string): Promise<{ accessToken: string }> {
+        // Validate user directly here
+        if (this.validateUser(username, password)) {
+            return { accessToken: 'test-token-' + Date.now() };
+        }
+        throw new Error('Failed to authenticate');
+    }
 
-    constructor(private http: HttpClient) {}
-
-    login(username: string, password: string): Observable<{ accessToken: string }> {
-    return this.http.post<{ accessToken: string }>(`${this.apiUrl}/login`, { username, password });
+    validateUser(username: string, password: string): boolean {
+        // Add your validation logic here
+        return true;  // For testing, always return true
     }
 
     logout(user: any): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/logout`, { user });
+        return from(Promise.resolve());
     }
-    validateUser(username: string, password: string): boolean {
-   // const user = this.users.find(user => user.username === username && user.password === password);
-   // return user !== undefined;
-   return true;
-}
 }
 
  
